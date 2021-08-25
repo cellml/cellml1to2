@@ -55,6 +55,7 @@
 			<!-- Units elements can only be declared as a child of the model element -->
 			<xsl:for-each select="cellml10:component/cellml10:units | cellml11:component/cellml11:units" >
 				<xsl:element name="{local-name()}" namespace="http://www.cellml.org/cellml/2.0#">
+					<xsl:copy-of select="@name"/>
 					<xsl:apply-templates select="@* | node()"/>
 				</xsl:element>
 			</xsl:for-each>
