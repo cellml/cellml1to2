@@ -1,0 +1,16 @@
+<model xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#" xmlns:xlink="http://www.w3.org/1999/xlink" name="basic_model" id="metaid0">
+  <component name="environment">
+    <variable id="environment.t" initial_value="0" name="t" units="second"/>
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <apply>
+        <eq/>
+        <ci>t</ci>
+        <apply>
+          <plus/>
+          <cn xmlns:cellml="http://www.cellml.org/cellml/1.1#" cellml:units="dimensionless">1</cn>
+          <cn xmlns:cellml="http://www.cellml.org/cellml/1.1#" cellml:units="dimensionless">3</cn>
+        </apply>
+      </apply>
+    </math>
+  </component>
+</model>

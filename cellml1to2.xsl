@@ -52,9 +52,19 @@
 	<xsl:template match="cellml10:model | cellml11:model">
 		<model xmlns="http://www.cellml.org/cellml/2.0#" xmlns:cellml="http://www.cellml.org/cellml/2.0#">
 			<xsl:copy-of select="@name"/>
+			<!-- Units elements can only be declared as a child of the model element -->
+			<xsl:for-each select="cellml10:component/cellml10:units | cellml11:component/cellml11:units" >
+				<xsl:element name="{local-name()}" namespace="http://www.cellml.org/cellml/2.0#">
+					<xsl:copy-of select="@name"/>
+					<xsl:apply-templates select="@* | node()"/>
+				</xsl:element>
+			</xsl:for-each>
 			<xsl:apply-templates select="@* | node()"/>
 		</model>
 	</xsl:template>
+
+	<!-- Don't do anything with units that are children of components -->
+	<xsl:template match="cellml10:component/cellml10:units | cellml11:component/cellml11:units"/>
 
 	<!-- Variable elements need special handling for their interface attributes -->
 	<xsl:template match="cellml10:variable | cellml11:variable">
